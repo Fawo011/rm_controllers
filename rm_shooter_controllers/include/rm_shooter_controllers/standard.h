@@ -75,6 +75,7 @@ private:
   void push(const ros::Time& time, const ros::Duration& period);
   void block(const ros::Time& time, const ros::Duration& period);
   void setSpeed(const rm_msgs::ShootCmd& cmd);
+  bool planVelocity(double vel);
   void normalize();
   void commandCB(const rm_msgs::ShootCmdConstPtr& msg)
   {
@@ -86,7 +87,6 @@ private:
   effort_controllers::JointVelocityController ctrl_friction_l_, ctrl_friction_r_;
   effort_controllers::JointPositionController ctrl_trigger_;
   int push_per_rotation_{};
-  double expect_velocity = 0;
   double push_wheel_speed_threshold_{};
   bool dynamic_reconfig_initialized_ = false;
   bool state_changed_ = false;
